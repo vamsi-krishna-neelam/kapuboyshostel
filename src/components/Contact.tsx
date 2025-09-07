@@ -7,7 +7,6 @@ import {
   MessageCircle, 
   Send,
   CheckCircle,
-  Star,
   Navigation
 } from 'lucide-react';
 
@@ -40,26 +39,36 @@ const Contact: React.FC = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Phone',
-      details: ['Balisetty. Vijay Kumar (Manager) -> +91 98765 43210 ', '+91 86867 41799','+91 70329 01607'],
-      action: 'Call Now'
+      details: [
+        { label: 'Balisetty. Vijay Kumar (Manager) -> +91 98765 43210', link: 'tel:+919876543210' },
+        { label: '+91 86867 41799', link: 'tel:+918686741799' },
+        { label: '+91 70329 01607', link: 'tel:+917032901607' }
+      ],
+      action: { label: 'Call Now', link: 'tel:+919876543210' }
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email',
-      details: ['gunturkapuboyshostel@gmail.com'],
-      action: 'Send Email'
+      details: [
+        { label: 'gunturkapuboyshostel@gmail.com', link: 'mailto:gunturkapuboyshostel@gmail.com' }
+      ],
+      action: { label: 'Send Email', link: 'mailto:gunturkapuboyshostel@gmail.com' }
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Address',
-      details: ['Near Next Zen International School', 'Gorantla','Guntur District, Guntur 522034'],
-      action: 'Get Directions'
+      details: [
+        { label: 'Near Next Zen International School', link: 'https://maps.app.goo.gl/DsaNLUQhXP8c5QM66' },
+        { label: 'Gorantla', link: 'https://maps.app.goo.gl/DsaNLUQhXP8c5QM66' },
+        { label: 'Guntur District, Guntur 522034', link: 'https://maps.app.goo.gl/DsaNLUQhXP8c5QM66' }
+      ],
+      action: { label: 'Get Directions', link: 'https://maps.app.goo.gl/DsaNLUQhXP8c5QM66' }
     },
     {
       icon: <Clock className="w-6 h-6" />,
       title: 'Hostel Hours',
-      details: ['24/7 Available',],
-      action: 'Visit Us'
+      details: [{ label: '24/7 Available', link: '#' }],
+      action: { label: 'Visit Us', link: '#' }
     }
   ];
 
@@ -106,13 +115,24 @@ const Contact: React.FC = () => {
                       {item.title}
                     </h4>
                     {item.details.map((detail, detailIndex) => (
-                      <p key={detailIndex} className="text-gray-600 dark:text-gray-300 text-sm mb-1">
-                        {detail}
-                      </p>
+                      <a 
+                        key={detailIndex}
+                        href={detail.link}
+                        target={detail.link.startsWith('http') ? '_blank' : '_self'}
+                        rel="noopener noreferrer"
+                        className="block text-gray-600 dark:text-gray-300 text-sm mb-1 hover:text-blue-400"
+                      >
+                        {detail.label}
+                      </a>
                     ))}
-                    <button className="text-blue-400 hover:text-blue-500 text-sm font-medium mt-2 transition-colors duration-200">
-                      {item.action} →
-                    </button>
+                    <a 
+                      href={item.action.link}
+                      target={item.action.link.startsWith('http') ? '_blank' : '_self'}
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-500 text-sm font-medium mt-2 inline-block transition-colors duration-200"
+                    >
+                      {item.action.label} →
+                    </a>
                   </div>
                 </div>
               </div>
@@ -120,18 +140,26 @@ const Contact: React.FC = () => {
 
             {/* Quick Contact Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex-1 flex items-center justify-center space-x-2 bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-xl transition-colors duration-300">
+              <a 
+                href="https://wa.me/919876543210" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center space-x-2 bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-xl transition-colors duration-300"
+              >
                 <MessageCircle className="w-5 h-5" />
                 <span>WhatsApp</span>
-              </button>
-              <button className="flex-1 flex items-center justify-center space-x-2 bg-blue-400 hover:bg-blue-500 text-white py-3 px-6 rounded-xl transition-colors duration-300">
+              </a>
+              <a 
+                href="tel:+919876543210" 
+                className="flex-1 flex items-center justify-center space-x-2 bg-blue-400 hover:bg-blue-500 text-white py-3 px-6 rounded-xl transition-colors duration-300"
+              >
                 <Phone className="w-5 h-5" />
                 <span>Call Now</span>
-              </button>
+              </a>
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Form (unchanged) */}
           <div className="lg:col-span-2">
             <div className="bg-gray-50 dark:bg-gray-800 rounded-3xl p-8 border border-gray-200 dark:border-gray-700">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
@@ -239,74 +267,35 @@ const Contact: React.FC = () => {
           </div>
         </div>
 
-      {/* Map Section */}
-<div className="mt-20">
-  <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
-    Find Us Here
-  </h3>
-  <div className="rounded-3xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700">
-    <div className="relative h-96 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-      <div className="text-center">
-        <MapPin className="w-16 h-16 text-blue-400 mx-auto mb-4" />
-        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-          Interactive Map
-        </h4>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">
-          Guntur Kapu Boys Hostel, Gorantla, Guntur District, Andhra Pradesh
-        </p>
-
-        {/* Google Maps Directions Button */}
-        <a
-          href="https://maps.app.goo.gl/DsaNLUQhXP8c5QM66"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center space-x-2 bg-green-400 hover:bg-blue-500 text-white px-60 py-3 rounded-xl transition-colors duration-300 mx-auto"
-        >
-          <Navigation className="w-5 h-5" />
-          <span>Get Directions</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-        {/* FAQ Section */}
+        {/* Map Section */}
         <div className="mt-20">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-12">
-            Frequently Asked Questions
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
+            Find Us Here
           </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {[
-              {
-                question: "What's included in the room rent?",
-                answer: "Room rent includes WiFi, electricity, water, security, housekeeping, and access to all common facilities."
-              },
-              {
-                question: "Is there a security deposit?",
-                answer: "Yes, we require a refundable security deposit of ₹5,000 for all room types, which is returned upon checkout."
-              },
-              {
-                question: "Can I visit before booking?",
-                answer: "Absolutely! We encourage campus visits. Contact us to schedule a tour and see our facilities firsthand."
-              },
-              {
-                question: "What are the meal options?",
-                answer: "We have an in-house cafeteria with affordable meals, plus common kitchens where you can cook your own food."
-              }
-            ].map((faq, index) => (
-              <div key={index} className="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl border border-gray-200 dark:border-gray-700">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
-                  {faq.question}
+          <div className="rounded-3xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-700">
+            <div className="relative h-96 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+              <div className="text-center">
+                <MapPin className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+                <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  Interactive Map
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
-                  {faq.answer}
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                  Guntur Kapu Boys Hostel, Gorantla, Guntur District, Andhra Pradesh
                 </p>
+                <a
+                  href="https://maps.app.goo.gl/DsaNLUQhXP8c5QM66"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-2 bg-green-400 hover:bg-blue-500 text-white px-60 py-3 rounded-xl transition-colors duration-300 mx-auto"
+                >
+                  <Navigation className="w-5 h-5" />
+                  <span>Get Directions</span>
+                </a>
               </div>
-            ))}
+            </div>
           </div>
         </div>
+
       </div>
     </section>
   );

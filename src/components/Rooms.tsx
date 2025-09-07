@@ -14,7 +14,7 @@ const Rooms: React.FC = () => {
     {
       id: 1,
       type: 'studyhall',
-      image: 'elevation.jpg',
+      image: 'studyhall.jpg',
     },
     {
       id: 2,

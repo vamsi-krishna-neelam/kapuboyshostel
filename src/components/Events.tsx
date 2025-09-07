@@ -41,7 +41,7 @@ const Events: React.FC = () => {
       time: '7:00 PM',
       description: 'Meet your fellow residents and kickstart new friendships',
       icon: <Users className="w-6 h-6" />,
-      image: '/images/hall1.jpg', // image 1
+      image: 'anniversity.JPG', // image 1
       category: 'Social'
     }
   ];
