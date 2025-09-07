@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Moon, Sun, MapPin, Phone } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
+import logo from '../images/logo.jpeg'; // Correct path relative to Hero.tsx
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -61,7 +62,8 @@ const Header: React.FC = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-yellow-400 rounded-xl flex items-center justify-center">
-              <span className="text-white font-bold text-xl"><img src="/title logo.jpeg" alt="Logo" className="w-10 h-10" />
+              <span className="text-white font-bold text-xl"><img src={logo} alt="Logo" className="w-10 h-10" />
+
 </span>
             </div>
             <span className="text-xl font-bold text-gray-900 dark:text-white">

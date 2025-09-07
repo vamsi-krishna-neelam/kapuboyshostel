@@ -1,6 +1,19 @@
 import React, { useState } from 'react';
 import { Bed, Users, Coffee, Shield } from 'lucide-react';
 
+// ✅ Import images (organized by type)
+import studyhall from '../images/studyhall.jpg';
+// import studyhall1 from '../images/studyhall.jpg';
+
+import mesh1 from '../images/mesh1.jpg';
+import mesh2 from '../images/mesh2.png';
+
+import accomdation1 from '../images/accomdations1.png';
+import accomdation2 from '../images/accomdations2.png';
+
+import washroom from '../images/washroom.png';
+// import washroom from '../images/washroom.png';
+
 interface Room {
   id: number;
   type: 'studyhall' | 'mesh' | 'Accomdation' | 'washroom';
@@ -8,67 +21,36 @@ interface Room {
 }
 
 const Rooms: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'studyhall' | 'mesh' | 'washroom'>('all');
+  const [activeFilter, setActiveFilter] = useState<'all' | 'studyhall' | 'mesh' | 'washroom' | 'Accomdation'>('all');
 
+  // ✅ Assign correct images under correct categories
   const rooms: Room[] = [
-    {
-      id: 1,
-      type: 'studyhall',
-      image: 'studyhall.jpg',
-    },
-    {
-      id: 2,
-      type: 'mesh',
-      image: 'mesh2.png',
-    },
-    {
-      id: 3,
-      type: 'washroom',
-      image: 'hostl1.JPG',
-    },
-    {
-      id: 4,
-      type: 'studyhall',
-      image: 'hostel2.png',
-    },
-    {
-      id: 5,
-      type: 'mesh',
-      image: 'mesh1.JPG',
-    },
-    {
-      id: 6,
-      type: 'washroom',
-      image: 'elevation.jpg',
-    },
-    {
-      id: 7,
-      type: 'Accomdation',
-      image: 'accomdations1.png',
-    },
-    {
-      id: 7,
-      type: 'Accomdation',
-      image: 'accomdations2.png',
-    },
+    { id: 1, type: 'studyhall', image: studyhall },
+    { id: 2, type: 'studyhall', image: studyhall },
+
+    { id: 3, type: 'mesh', image: mesh1 },
+    { id: 4, type: 'mesh', image: mesh2 },
+
+    { id: 5, type: 'Accomdation', image: accomdation1 },
+    { id: 6, type: 'Accomdation', image: accomdation2 },
+
+    { id: 7, type: 'washroom', image: washroom },
+    { id: 8, type: 'washroom', image: washroom },
   ];
 
   const filters = [
     { id: 'all', label: 'All Rooms', icon: <Bed className="w-4 h-4" /> },
     { id: 'studyhall', label: 'Study Hall', icon: <Users className="w-4 h-4" /> },
     { id: 'mesh', label: 'Mesh', icon: <Coffee className="w-4 h-4" /> },
-    { id: 'Accomdation', label: 'Accomdation', icon: <Shield className="w-4 h-4" /> },
+    { id: 'Accomdation', label: 'Accommodation', icon: <Shield className="w-4 h-4" /> },
     { id: 'washroom', label: 'Wash Rooms', icon: <Shield className="w-4 h-4" /> },
   ];
 
-  const filteredRooms = activeFilter === 'all' 
-    ? rooms 
-    : rooms.filter(room => room.type === activeFilter);
+  const filteredRooms = activeFilter === 'all' ? rooms : rooms.filter(room => room.type === activeFilter);
 
   return (
     <section id="rooms" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
@@ -78,13 +60,13 @@ const Rooms: React.FC = () => {
             </span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Explore our Study Halls, Mesh, and Wash Rooms – designed for comfort, productivity, and community living.
+            Explore our Study Halls, Mesh, Accommodation, and Wash Rooms – designed for comfort, productivity, and community living.
           </p>
         </div>
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filters.map((filter) => (
+          {filters.map(filter => (
             <button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id as any)}
@@ -100,16 +82,16 @@ const Rooms: React.FC = () => {
           ))}
         </div>
 
-        {/* Rooms Grid (Images Only) */}
+        {/* Rooms Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredRooms.map((room) => (
-            <div 
+          {filteredRooms.map(room => (
+            <div
               key={room.id}
               className="group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
             >
-              <div 
+              <div
                 className="h-64 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                style={{ backgroundImage: `url('${room.image}')` }}
+                style={{ backgroundImage: `url(${room.image})` }}
               />
             </div>
           ))}

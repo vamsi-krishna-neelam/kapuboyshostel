@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
+// ✅ Import images from src/images/
+import venki from '../images/venki.jpg';
+import prasad from '../images/prasad.jpg';
+import braham from '../images/braham.jpg';
+import koti from '../images/koti.jpg';
+// import srinivas from '../images/srinivas.jpg';
+import syam from '../images/syam.jpg';
+
 interface Testimonial {
   id: number;
   name: string;
@@ -23,7 +31,7 @@ const Testimonials: React.FC = () => {
       university: 'Hindu Pharmacy',
       rating: 5,
       text: "Guntur Kapu Boys Hostel has been my home for the past 2 years. The facilities are top-notch, especially the study rooms which helped me maintain my grades. The community here is amazing - I've made lifelong friends!",
-      image: '/venki.jpg',
+      image: venki,
       duration: '2 years',
     },
     {
@@ -33,7 +41,7 @@ const Testimonials: React.FC = () => {
       university: 'CIET',
       rating: 5,
       text: "The best decision I made was choosing Kapu Boys Hostel. From the security to the cleanliness, everything is perfect. The staff is incredibly helpful and the WiFi is super fast - perfect for online classes.",
-      image: '/prasad.jpg',
+      image: prasad,
       duration: '2 years',
     },
     {
@@ -43,7 +51,7 @@ const Testimonials: React.FC = () => {
       university: 'CIET',
       rating: 5,
       text: "As a B.Tech student, I needed a place that balanced comfort with productivity. Haven Hostel exceeded my expectations with its premium facilities and vibrant community atmosphere.",
-      image: '/student3.jpg',
+      image: braham,
       duration: '2 years',
     },
     {
@@ -53,19 +61,19 @@ const Testimonials: React.FC = () => {
       university: 'AIIMS Delhi',
       rating: 4,
       text: "The study environment here is exceptional. Being a medical student, I needed quiet spaces for long study sessions, and the dedicated study rooms are perfect. Great value for money!",
-      image: '/koti.jpg',
+      image: koti,
       duration: '6 months',
     },
-    {
-      id: 5,
-      name: 'Srinivasarao M',
-      course: 'Chartered Accountancy',
-      university: 'NIFT Mumbai',
-      rating: 5,
-      text: "The creative environment and the community at Haven Hostel have been instrumental in my growth. The recreational facilities help me unwind after intensive design sessions.",
-      image: '/koti.jpg', // Make sure koti.jpg is inside public/
-      duration: '8 months',
-    },
+    // {
+    //   id: 5,
+    //   name: 'Srinivasarao M',
+    //   course: 'Chartered Accountancy',
+    //   university: 'NIFT Mumbai',
+    //   rating: 5,
+    //   text: "The creative environment and the community at Haven Hostel have been instrumental in my growth. The recreational facilities help me unwind after intensive design sessions.",
+    //   image: srinivas,
+    //   duration: '8 months',
+    // },
     {
       id: 6,
       name: 'Syan Venkat Paramkusam',
@@ -73,7 +81,7 @@ const Testimonials: React.FC = () => {
       university: 'National Law School',
       rating: 5,
       text: "Guntur Kapu Boys Hostel provides the perfect balance of privacy and community. The legal library access and quiet study zones have been crucial for my law studies. Highly recommended!",
-      image: '/syam.jpg',
+      image: syam,
       duration: '3 years',
     },
   ];
@@ -164,7 +172,7 @@ const Testimonials: React.FC = () => {
                     <div className="flex items-center justify-center space-x-4">
                       <div
                         className="w-16 h-16 bg-cover bg-center rounded-full border-4 border-white dark:border-gray-700 shadow-lg"
-                        style={{ backgroundImage: `url('${testimonial.image}')` }}
+                        style={{ backgroundImage: `url(${testimonial.image})` }}
                       />
                       <div className="text-center sm:text-left">
                         <h4 className="text-lg font-bold text-gray-900 dark:text-white">
@@ -224,9 +232,7 @@ const Testimonials: React.FC = () => {
             <div className="text-3xl lg:text-4xl font-bold text-blue-400 mb-2">
               4.9
             </div>
-            <div className="text-gray-600 dark:text-gray-400">
-              Average Rating
-            </div>
+            <div className="text-gray-600 dark:text-gray-400">Average Rating</div>
           </div>
           <div className="text-center">
             <div className="text-3xl lg:text-4xl font-bold text-yellow-400 mb-2">

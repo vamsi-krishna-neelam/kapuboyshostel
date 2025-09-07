@@ -1,72 +1,88 @@
-import React from 'react';
-import { Calendar, Users, Music, BookOpen, Coffee, Camera, Gamepad2, Heart } from 'lucide-react';
+import React from "react";
+import {
+  Calendar,
+  Users,
+  Music,
+  BookOpen,
+  Coffee,
+  Camera,
+  Gamepad2,
+  Heart,
+} from "lucide-react";
+
+// ✅ Import images & videos from src/assets
+import anniversityImg from "../images/anniversity.jpg";
+import studyhallImg from "../images/studyhall.jpg";
+import ganeshCelebrationsVideo from "../videos/ganeshCelebrations.mp4";
+import pranapratishtaVideo from "../videos/PranapratishtaDay.mp4";
 
 const Events: React.FC = () => {
   const upcomingEvents = [
     {
       id: 1,
-      title: 'Pranapratishta Day of ganesh chaturthi',
-      date: 'August 27th, 2025',
-      time: '8:00 AM',
-      description: 'Celebrate the first day of Ganesh Chaturthi with prayers and the installation of Lord Ganesha’s idol',
+      title: "Pranapratishta Day of Ganesh Chaturthi",
+      date: "August 27th, 2025",
+      time: "8:00 AM",
+      description:
+        "Celebrate the first day of Ganesh Chaturthi with prayers and the installation of Lord Ganesha’s idol",
       icon: <Music className="w-6 h-6" />,
-      video: 'PranapratishtaDay.mp4', // 4th is a video
-      category: 'Cultural'
+      video: pranapratishtaVideo, // imported video
+      category: "Cultural",
     },
     {
-     
       id: 2,
-      title: 'Ganesh Celebrations',
-      date: 'August 31st , 2025 Friday',
-      time: '6:00 PM',
-      description: 'Celebrate Ganesh Chaturthi with fun activities and cultural events',
+      title: "Ganesh Celebrations",
+      date: "August 31st, 2025 Friday",
+      time: "6:00 PM",
+      description:
+        "Celebrate Ganesh Chaturthi with fun activities and cultural events",
       icon: <Coffee className="w-6 h-6" />,
-      video: 'ganeshCelebrations.mp4', // 4th is a video
-      category: 'Social'
+      video: ganeshCelebrationsVideo, // imported video
+      category: "Social",
     },
     {
       id: 3,
-      title: 'Study Group Sessions',
-      date: 'Every Monday',
-      time: '6:00 PM',
-      description: 'Collaborative study sessions for different subjects',
+      title: "Study Group Sessions",
+      date: "Every Monday",
+      time: "6:00 PM",
+      description: "Collaborative study sessions for different subjects",
       icon: <BookOpen className="w-6 h-6" />,
-      image: 'studyhall.jpg', // image 2
-      category: 'Academic'
+      image: studyhallImg, // imported image
+      category: "Academic",
     },
     {
       id: 4,
-      title: 'Welcome Kapu Hostel Anniversary',
-      date: 'November, 2024',
-      time: '7:00 PM',
-      description: 'Meet your fellow residents and kickstart new friendships',
+      title: "Welcome Kapu Hostel Anniversary",
+      date: "November, 2024",
+      time: "7:00 PM",
+      description: "Meet your fellow residents and kickstart new friendships",
       icon: <Users className="w-6 h-6" />,
-      image: 'anniversity.JPG', // image 1
-      category: 'Social'
-    }
+      image: anniversityImg, // imported image
+      category: "Social",
+    },
   ];
 
   const communityFeatures = [
     {
       icon: <Camera className="w-8 h-8" />,
-      title: 'Photography Club',
-      description: 'Capture memories and explore the city together'
+      title: "Photography Club",
+      description: "Capture memories and explore the city together",
     },
     {
       icon: <Gamepad2 className="w-8 h-8" />,
-      title: 'Gaming Tournaments',
-      description: 'Monthly gaming competitions with exciting prizes'
+      title: "Gaming Tournaments",
+      description: "Monthly gaming competitions with exciting prizes",
     },
     {
       icon: <BookOpen className="w-8 h-8" />,
-      title: 'Book Club',
-      description: 'Monthly book discussions and literary exchanges'
+      title: "Book Club",
+      description: "Monthly book discussions and literary exchanges",
     },
     {
       icon: <Heart className="w-8 h-8" />,
-      title: 'Wellness Programs',
-      description: 'Yoga sessions, meditation, and mental health support'
-    }
+      title: "Wellness Programs",
+      description: "Yoga sessions, meditation, and mental health support",
+    },
   ];
 
   return (
@@ -75,14 +91,15 @@ const Events: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Events &{' '}
+            Events &{" "}
             <span className="bg-gradient-to-r from-blue-400 to-yellow-400 bg-clip-text text-transparent">
               Community
             </span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            More than just accommodation - join a vibrant community of students. 
-            Participate in exciting events and build lifelong connections.
+            More than just accommodation - join a vibrant community of
+            students. Participate in exciting events and build lifelong
+            connections.
           </p>
         </div>
 
@@ -91,14 +108,14 @@ const Events: React.FC = () => {
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
             Highlights of Events
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {upcomingEvents.map((event) => (
-              <div 
+              <div
                 key={event.id}
                 className="group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
               >
-                {/* Event Media (Image or Video) */}
+                {/* Event Media */}
                 <div className="relative h-48 overflow-hidden">
                   {event.video ? (
                     <video
@@ -110,9 +127,10 @@ const Events: React.FC = () => {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   ) : (
-                    <div
-                      className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                      style={{ backgroundImage: `url('${event.image}')` }}
+                    <img
+                      src={event.image}
+                      alt={event.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                   )}
 
@@ -166,17 +184,17 @@ const Events: React.FC = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {communityFeatures.map((feature, index) => (
-              <div 
+              <div
                 key={index}
-                className="group text-center p-6 bg-white dark:bg-gray-900 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                className="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-yellow-400 rounded-xl flex items-center justify-center text-white mb-4">
                   {feature.icon}
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
                   {feature.title}
                 </h4>
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
                   {feature.description}
                 </p>
               </div>
